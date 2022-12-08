@@ -108,13 +108,14 @@ def to_get_lyrics(files, a, s, t):
                 text_file.close()
             else:
                 click.secho('\n' + title.upper() + " + " + artist.upper() + " LYRICS\n" + lyric, fg='blue')
+                
+    return lyric
 
 
 def find_lyrics(song_title, song_artist):
     search_query = song_title.lower() + ' ' + song_artist.lower()
     # String for performing search query
     search_query = "+".join(search_query.split(' '))
-    print("-------------", search_query)
     url = 'https://search.azlyrics.com/search.php?q=' + search_query + "&x=41b8cb90e4d71ee149a7dbe1e33fb6ae0f124c7b69da6dd906ba58a8cf744435"
     # To perform search query on AZlyrics.com
     content = urllib.request.urlopen(url)
@@ -138,7 +139,7 @@ def find_lyrics(song_title, song_artist):
         for div in inner_div.find_all('div'):
             if not div.has_attr('class'):
                 return div.text
-    return
+    return 
 
 
 if __name__ == '__main__':
