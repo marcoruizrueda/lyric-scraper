@@ -35,6 +35,22 @@ python setup.py install
 * Enter `lyrics [FILENAMES]`, to get lyric from song MP3 file.
 * Check out different options, by enter `lyrics --help`
 
+### Use from python script
+```
+import sys
+
+sys.path.append("/opt/anaconda3/envs/hack/lib/python3.11/site-packages/")
+from lyric_scraper.main import find_lyrics
+
+def main(song_title, song_artist):
+    return find_lyrics(song_title, song_artist)
+
+if __name__ == '__main__':
+    song_title = "stand by me"
+    song_artist = "ben e king"
+    lyric = main(song_title, song_artist)
+    print("............", lyric)
+```
 
 ## License
 
